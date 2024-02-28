@@ -1,9 +1,12 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const {uploadFile, deleteFile} = require('./aws/filesactions');
+const cors = require("cors")
 
 const app = express();
 
+// use cors
+app.use(cors())
 
 
 app.use(fileUpload({
@@ -70,7 +73,7 @@ app.delete('/delete/:namefile', async (req, res) => {
 });
 
 
-app.listen(3000, () => {
+app.listen(80, () => {
     console.log('Server is running on port 3000');
     })
 
